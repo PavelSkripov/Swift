@@ -1,0 +1,90 @@
+import UIKit
+
+class Figure {
+    var name: String { return "name" }
+    var cornerRadius : Double { return 0 }
+    
+}
+
+protocol Quadrangular {
+    var width : Double { get set }
+    var length : Double { get set }
+    var perimeter : Double { get set }
+    
+}
+
+class Triangle: Figure {
+    var h : Double //Основание треугольника
+    var b : Double //Высота треугольника
+    
+    init(h: Double, b: Double){
+        self.b = b
+        self.h = h
+    }
+    override var name: String {
+        return "Triangle"
+      }
+    override var cornerRadius: Double {
+        return 3
+      }
+    
+    func CalculateArea() -> Double {
+        let area = 0.5 * b * h
+        return area
+    }
+}
+
+class Сircle: Figure {
+    let Pi = 3.1415926535
+    var R : Double //Радиус круга
+    
+    init(R: Double){
+        self.R = R
+    }
+    
+    override var name: String {
+        return "Circle"
+      }
+    override var cornerRadius: Double {
+        return 2
+      }
+    
+    func CalculateArea() -> Double {
+        let area = Pi * R * R
+        return area
+    }
+}
+
+class Rect: Figure, Quadrangular {
+    
+     
+    var width : Double
+    var length : Double
+    var perimeter: Double
+    
+    init(width: Double, length: Double){
+        self.width = width
+        self.length = length
+        self.perimeter = width * 2 + length * 2
+    }
+        
+    override var name: String {
+        return "Rectangle"
+      }
+    override var cornerRadius: Double {
+        return 4
+      }
+    func CalculateArea() -> Double {
+        let area = width * length
+        return area
+    }
+}
+
+let triangle = Triangle (h: 5, b: 6)
+let circle = Сircle (R: 7)
+let rectangle = Rect (width: 2.3, length: 4)
+
+print (triangle.CalculateArea())
+print (circle.CalculateArea())
+print (rectangle.CalculateArea())
+print (rectangle.perimeter)
