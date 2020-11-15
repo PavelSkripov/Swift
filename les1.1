@@ -9,8 +9,12 @@ class Figure {
 protocol Quadrangular {
     var width : Double { get set }
     var length : Double { get set }
-    var perimeter : Double { get set }
+ //   var perimeter : Double { get set }
     
+}
+
+extension Quadrangular {
+    var perimeter: Double { return width * 2 + length * 2 } // реализация по умолчанию
 }
 
 class Triangle: Figure {
@@ -28,18 +32,18 @@ class Triangle: Figure {
         return 3
       }
     
-    func CalculateArea() -> Double {
+    func calculateArea() -> Double {
         let area = 0.5 * b * h
         return area
     }
 }
 
 class Сircle: Figure {
-    let Pi = 3.1415926535
-    var R : Double //Радиус круга
+    let pi = 3.1415926535
+    var r : Double //Радиус круга
     
-    init(R: Double){
-        self.R = R
+    init(r: Double){
+        self.r = r
     }
     
     override var name: String {
@@ -49,8 +53,8 @@ class Сircle: Figure {
         return 2
       }
     
-    func CalculateArea() -> Double {
-        let area = Pi * R * R
+    func calculateArea() -> Double {
+        let area = pi * r * r
         return area
     }
 }
@@ -60,12 +64,12 @@ class Rect: Figure, Quadrangular {
      
     var width : Double
     var length : Double
-    var perimeter: Double
+//    var perimeter: Double
     
     init(width: Double, length: Double){
         self.width = width
         self.length = length
-        self.perimeter = width * 2 + length * 2
+ //       self.perimeter = width * 2 + length * 2
     }
         
     override var name: String {
@@ -74,17 +78,23 @@ class Rect: Figure, Quadrangular {
     override var cornerRadius: Double {
         return 4
       }
-    func CalculateArea() -> Double {
+    func calculateArea() -> Double {
         let area = width * length
         return area
     }
 }
 
 let triangle = Triangle (h: 5, b: 6)
-let circle = Сircle (R: 7)
+let circle = Сircle (r: 7)
 let rectangle = Rect (width: 2.3, length: 4)
 
-print (triangle.CalculateArea())
-print (circle.CalculateArea())
-print (rectangle.CalculateArea())
-print (rectangle.perimeter)
+print (triangle.calculateArea())
+print (circle.calculateArea())
+print (rectangle.calculateArea())
+print (rectangle.perimeter) 
+
+
+
+
+
+
