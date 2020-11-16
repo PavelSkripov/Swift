@@ -1,0 +1,28 @@
+import UIKit
+
+extension Int {
+    func palindrome() -> Bool{ //проверяет является ли число палиндромом
+       var rev = 0
+       var dig = 0
+       var num = self
+        while num > 0 {
+            dig = num % 10
+            rev = rev * 10 + dig
+            num = num / 10
+            dig = 0
+        }
+        if rev == self { return true }
+        else { return false }
+        
+    }
+}
+
+var int1 = 343343
+print (int1.palindrome())
+
+
+extension Double {
+    var metersPerSecond: Double { return self * 1000 / 3600 } //переводит скорость из км/ч в м/с
+}
+let speed = 9.metersPerSecond
+print (speed)
